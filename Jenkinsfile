@@ -26,7 +26,7 @@ pipeline {
         }
         stage("build stage") {
             when {
-                  branch 'master'  }
+                  branch 'main'  }
             steps {
                 sh """echo "this is build stage for master only"
                 """
