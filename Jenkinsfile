@@ -7,6 +7,7 @@ pipeline {
 
     stages {
         stage ('lint test') {
+            when { anyOf { branch 'dev*'; branch 'main'; branch 'PR-*'; branch 'feature*'} }
             steps {
                 sh """
                 echo 'lint-test'
@@ -15,7 +16,7 @@ pipeline {
         } 
 
         stage ('unit-test') {
-            when { anyOf { branch 'dev*'; branch 'main'} }
+            when { anyOf { branch 'dev*'; branch 'main'; branch 'PR-*'} }
             steps {
                 script {
                     sh """
@@ -32,13 +33,5 @@ pipeline {
                 """
             }
         }
-        stage("change req stage") {
-            when { changeRequest() 
-                   branch 'dev-test' }
-                steps {
-                sh """echo "this stage is building only for pr to dev-test"
-                """
-        }
-    }
 }
 }
