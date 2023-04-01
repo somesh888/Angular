@@ -15,7 +15,7 @@ pipeline {
         } 
 
         stage ('unit-test') {
-            when { anyOf { branch 'dev*'; branch 'main';branch 'feature*' } }
+            when { anyOf { branch 'dev*'; branch 'main'} }
             steps {
                 script {
                     sh """
