@@ -32,5 +32,13 @@ pipeline {
                 """
             }
         }
+        stage("change req stage") {
+            when { changeRequest() 
+                   branch 'dev-test' }
+                steps {
+                sh """echo "this is build stage for master only"
+                """
+        }
     }
+}
 }
