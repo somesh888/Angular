@@ -36,7 +36,7 @@ pipeline {
             when { changeRequest() 
                    branch 'dev-test' }
                 steps {
-                sh """echo "this is build stage for master only"
+                sh """echo "this stage is building only for pr to dev-test"
                 """
         }
     }
